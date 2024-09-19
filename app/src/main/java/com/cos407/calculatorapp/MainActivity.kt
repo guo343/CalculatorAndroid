@@ -31,10 +31,10 @@ class MainActivity : AppCompatActivity() {
 
         add.setOnClickListener {
             val userInput1 = editText1.text.toString()
-            val number1: Int = userInput1.toInt()
+            val number1: Int = userInput1.toIntOrNull() ?: 0
 
             val userInput2 = editText2.text.toString()
-            val number2: Int = userInput2.toInt()
+            val number2 = userInput2.toIntOrNull() ?: 0
 
             val intent = Intent(this, CalculatorResult::class.java)
             intent.putExtra("extra_message", (number1 + number2).toString())
@@ -45,10 +45,10 @@ class MainActivity : AppCompatActivity() {
 
         minus.setOnClickListener {
             val userInput1 = editText1.text.toString()
-            val number1: Int = userInput1.toInt()
+            val number1: Int = userInput1.toIntOrNull() ?: 0
 
             val userInput2 = editText2.text.toString()
-            val number2: Int = userInput2.toInt()
+            val number2 = userInput2.toIntOrNull() ?: 0
 
             val intent = Intent(this, CalculatorResult::class.java)
             intent.putExtra("extra_message", (number1 - number2).toString())
@@ -59,10 +59,10 @@ class MainActivity : AppCompatActivity() {
 
         multiply.setOnClickListener {
             val userInput1 = editText1.text.toString()
-            val number1: Int = userInput1.toInt()
+            val number1: Int = userInput1.toIntOrNull() ?: 0
 
             val userInput2 = editText2.text.toString()
-            val number2: Int = userInput2.toInt()
+            val number2 = userInput2.toIntOrNull() ?: 0
 
             val intent = Intent(this, CalculatorResult::class.java)
             intent.putExtra("extra_message", (number1 * number2).toString())
