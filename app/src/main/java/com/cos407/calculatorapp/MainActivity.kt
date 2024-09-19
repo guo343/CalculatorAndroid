@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -72,15 +73,20 @@ class MainActivity : AppCompatActivity() {
 
         divide.setOnClickListener {
             val userInput1 = editText1.text.toString()
-            val number1: Int = userInput1.toInt()
+            val number1: Int = userInput1.toIntOrNull() ?: 0
 
             val userInput2 = editText2.text.toString()
-            val number2: Int = userInput2.toInt()
+            val number2 = userInput2.toIntOrNull() ?: 0
 
-            val intent = Intent(this, CalculatorResult::class.java)
-            intent.putExtra("extra_message", (number1 / number2).toString())
 
-            startActivity(intent)
+            if (number2 == 0) {
+                Toast.makeText(this, "cannot divide by 0", Toast.LENGTH_SHORT).show()
+            } else {
+                val intent = Intent(this, CalculatorResult::class.java)
+                intent.putExtra("extra_message", (number1 / number2).toString())
+
+                startActivity(intent)
+            }
 
         }
     }
